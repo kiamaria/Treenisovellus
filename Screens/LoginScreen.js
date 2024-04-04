@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   StyleSheet,
   Text,
@@ -9,20 +9,28 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { Button } from "@rneui/themed";
-import { getApp, getAuth } from "../firebaseConfig";
 import {
   createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
+  signInWithEmailAndPassword, getAuth
 } from "firebase/auth";
 
 
-const HomeScreen = () => {
+const LoginScreen = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const auth = getAuth();
 
-  // Signe Up
+  useEffect(() => {
+    const subscribtion = auth.onAuthStateChanged(currentUser => {
+      if (currentUser) {
+        props.navigation.navigate("Home");
+      } 
+    })
+    return () => (subscribtion())
+  }, []);
+
+  // Sign Up
   const handleSignUp = () => {
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
@@ -38,7 +46,9 @@ const HomeScreen = () => {
   const handleSignIn = () => {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        const user = userCredential.user;
+        setEmail();
+        setPassword();
+        props.navigation.navigate("Home");
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -89,7 +99,7 @@ const HomeScreen = () => {
   );
 };
 
-export default HomeScreen;
+export default LoginScreen;
 
 const styles = StyleSheet.create({
   container: {

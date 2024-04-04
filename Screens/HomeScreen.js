@@ -1,16 +1,29 @@
+import { Button } from "@rneui/themed";
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, SafeAreaView } from "react-native";
+import { signOut, getAuth } from "firebase/auth";
 
-const HomeScreen = () => {
-    return (
-        <View>
-            <Text>Home Screen</Text>
-        </View>
-    )
-}
+const HomeScreen = (props) => {
+  const auth = getAuth();
 
-export default HomeScreen
+  const handleSignOut = () => {
+    signOut(auth)
+      .then(() => {
+        props.navigation.navigate("Login");
+      })
+      .catch((error) => {
+        // An error happened.
+      });
+  };
 
-const styles = StyleSheet.create({
+  return (
+    <SafeAreaView>
+      <Text>Home Screen</Text>
+      <Button onPress={() => handleSignOut()}>Log Out</Button>
+    </SafeAreaView>
+  );
+};
 
-})
+export default HomeScreen;
+
+const styles = StyleSheet.create({});
