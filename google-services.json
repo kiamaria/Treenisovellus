@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "124914196786",
+    "project_id": "treenisovellus",
+    "storage_bucket": "treenisovellus.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:124914196786:android:6b5967cb7a9316df9a372b",
+        "android_client_info": {
+          "package_name": "com.treenisovellus.myapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBoUszjjS-ASo39A9lwDQ9_vq9YAbBqRZg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

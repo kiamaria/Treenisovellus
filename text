@@ -1,0 +1,13 @@
+[
+    {
+        "Muscles": "Biceps",
+        "WorkOut": "Barbell Curl",
+        "Intensity_Level": "Beginner",
+        "Beginner Sets": "3 Sets with 12 to 15 reps",
+        "Intermediate Sets": "4 Sets with 8 to 12 reps",
+        "Expert Sets": "5 Sets with 3 to 10 reps",
+        "Equipment": "Barbell",
+        "Explaination": "Barbell Curl: Stand with feet shoulder-width apart, hold a barbell with an underhand grip and curl it towards your shoulders.",
+        "Long Explanation": "This classic bicep-building exercise involves standing with feet shoulder-width apart, gripping a barbell with an underhand grip. With elbows close to the torso, curl the barbell towards the shoulders while keeping the upper arms stationary. This motion targets the bicep muscles, including both the long and short head, providing development in muscle mass and arm strength. The focus is on smooth, controlled movements, exhaling as you lift the barbell and inhaling on the return. For beginners, it's crucial to start with a lighter weight to perfect the form before progressing.",
+        "Video": "https://www.youtube.com/results?search_query=Barbell+Curl"
+    },

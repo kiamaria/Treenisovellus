@@ -5,7 +5,7 @@ import firebase from "firebase/app";
 import { auth } from "./firebaseConfig";
 
 // Screen imports
-import LoginScreen from "./Screens/LoginScreen.js";
+import LoginScreen from "./Screens/LoginScreen";
 import HomeScreen from './Screens/HomeScreen';
 
 // Creating stack navigation
