@@ -2,10 +2,13 @@ import React from "react";
 import { StyleSheet, Text, SafeAreaView, Button, View } from "react-native";
 import { signOut, getAuth } from "firebase/auth";
 
+//Luotujen treenien katselu -sivu & uloskirjautuminen
 
-export const TrainingScreen = () => {
+
+export const TrainingScreen = (props) => {
     const auth = getAuth();
 
+  //Kirjaudu ulos
     const handleSignOut = () => {
       signOut(auth)
         .then(() => {
