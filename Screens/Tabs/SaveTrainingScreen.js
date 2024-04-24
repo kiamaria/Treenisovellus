@@ -14,8 +14,8 @@ import { ListItem, Card, CheckBox } from "@rneui/themed";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { SelectList } from "react-native-dropdown-select-list";
 import { Icon } from "react-native-elements";
-import { database } from "../../firebaseConfig";
-import { onValue, ref, push } from "firebase/database";
+import { database, auth } from "../../firebaseConfig";
+import { collection, addDoc } from "firebase/firestore"; 
 
 const Stack = createNativeStackNavigator();
 
@@ -58,12 +58,13 @@ const ShowTraining = (props) => {
   );
 };
 
-
 const SaveTraining = (props) => {
   const [muscle, setMuscle] = useState("");
   const [exercises, setExercises] = useState([]);
   const [checkedExercises, setCheckedExercises] = useState([]);
   const [trainingName, setTrainingName] = useState("");
+
+  const user = auth.currentUser;
 
   const muscleGroups = [
     "Biceps",
@@ -106,11 +107,17 @@ const SaveTraining = (props) => {
       console.error(error);
     }
   };
+  console.log(user.uid)
 
   //Databseen tallentaminen
-  const saveToDatabase = () => {
-    push(ref(database, "trainings/"), { trainingName, checkedExercises });
-    Alert.alert("Training saved!")
+  const saveToDatabase = async () => {
+    const docRef = await addDoc(collection(database, "trainings"), {
+      trainingName: trainingName,
+      exercises: checkedExercises,
+      user: user.uid,
+    });
+    console.log("Document written with ID: ", docRef.id);
+    Alert.alert("Training saved!");
     setCheckedExercises([]);
     setTrainingName("");
   };
@@ -168,6 +175,27 @@ const SaveTraining = (props) => {
     );
   };
 
+    const handlePress = () => {
+      Alert.prompt(
+        "How many reps?",
+        null,
+        (reps) => {
+          if (reps !== null) {
+            // Tarkista, että reps on numero ennen kuin päivität tilan
+            if (!isNaN(reps)) {
+              setReps(parseInt(reps));
+              checked(item.WorkOut);
+            } else {
+              Alert.alert("Please enter a valid number for reps.");
+            }
+          }
+        },
+        "plain-text",
+        "",
+        "numeric"
+      );
+    };
+
   //Liikkeiden suodatus ja näyttäminen
   return (
     <SafeAreaView style={styles.container}>
@@ -194,7 +222,7 @@ const SaveTraining = (props) => {
             >
               <CheckBox
                 checked={checkedExercises.includes(item.WorkOut)}
-                onPress={() => checked(item.WorkOut)}
+                onPress={() => { checked(item.WorkOut) || Alert.prompt }}
               />
               <ListItem.Content>
                 <ListItem.Title>{item.WorkOut}</ListItem.Title>
@@ -235,8 +263,7 @@ const styles = StyleSheet.create({
     width: "90%",
   },
   text: {
-    color: 'white',
+    color: "white",
     padding: 8,
-
-  }
+  },
 });

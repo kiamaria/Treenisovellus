@@ -7,12 +7,15 @@ import {
   KeyboardAvoidingView,
   TextInput,
   TouchableOpacity,
+  Alert,
 } from "react-native";
 import { Button } from "@rneui/themed";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword, getAuth
 } from "firebase/auth";
+
+//Kirjautumis -sivu
 
 
 const LoginScreen = (props) => {
@@ -30,7 +33,7 @@ const LoginScreen = (props) => {
     return () => (subscribtion())
   }, []);
 
-  // Sign Up
+  // Rekisteröidy
   const handleSignUp = () => {
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
@@ -39,10 +42,11 @@ const LoginScreen = (props) => {
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
+        Alert.alert(errorMessage)
       });
   };
 
-  //Sign in
+  //Kirjaudu sisään
   const handleSignIn = () => {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
@@ -53,6 +57,8 @@ const LoginScreen = (props) => {
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
+        console.log(errorMessage)
+        Alert.alert(errorMessage)
       });
   };
 

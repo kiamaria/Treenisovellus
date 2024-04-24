@@ -16,10 +16,26 @@ const HomeScreen = (props) => {
   return (
     <SafeAreaView style={styles.container}>
       <Tab.Navigator initialRouteName="Training">
-        <Tab.Screen name="Training" component={TrainingScreen} />
-        <Tab.Screen name="SaveTraining" component={SaveTrainingScreen} />
-        <Tab.Screen name="Score" component={ScoreScreen} />
-        <Tab.Screen name="Calendar" component={CalendarScreen} />
+        <Tab.Screen
+          name="Training"
+          component={TrainingScreen}
+          options={{ headerShown: false }}
+        />
+        <Tab.Screen
+          name="SaveTraining"
+          component={SaveTrainingScreen}
+          options={{ headerShown: false }}
+        />
+        <Tab.Screen
+          name="Score"
+          component={ScoreScreen}
+          options={{ headerShown: false }}
+        />
+        <Tab.Screen
+          name="Calendar"
+          component={CalendarScreen}
+          options={{ headerShown: false }}
+        />
       </Tab.Navigator>
     </SafeAreaView>
   );
