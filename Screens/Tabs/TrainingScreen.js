@@ -9,10 +9,9 @@ import {
 } from "react-native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { signOut, getAuth } from "firebase/auth";
-import { database, auth } from "../../firebaseConfig";
+import { database } from "../../firebaseConfig";
 import { collection, query, where, getDocs } from "firebase/firestore";
-import { ListItem, Card } from "@rneui/themed";
-import { Icon } from "react-native-elements";
+import { ListItem, Icon } from "@rneui/themed";
 
 //Luotujen treenien katselu -sivu & uloskirjautuminen
 
@@ -69,6 +68,7 @@ const TrainingScreenList = (props) => {
       });
   };
 
+  // Näytetään luodut omat treenit
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.bluebox}>
@@ -97,7 +97,10 @@ const TrainingScreenList = (props) => {
           />
         )}
       </View>
-      <Button title="Log Out" onPress={() => handleSignOut()} />
+      <View style={styles.together}>
+        <Button title="Log Out" onPress={() => handleSignOut()} color={"white"}/>
+        <Icon name="sync" onPress={() => getTrainings()} style={styles.sync} color={"white"}/>
+      </View>
     </SafeAreaView>
   );
 };
@@ -125,7 +128,7 @@ const ShowInformation = (props) => {
 };
 
 const styles = StyleSheet.create({
-  container: { flex: 1, alignItems: "center" },
+  container: { flex: 1, alignItems: "center", justifyContent: "space-between" },
   bluebox: {
     backgroundColor: "#7CB9E8",
     padding: 20,
@@ -137,5 +140,16 @@ const styles = StyleSheet.create({
     color: "white",
     fontSize: 20,
     color: "white",
+  },
+  together: {
+    flexDirection: "row",
+    borderRadius: 9,
+    width: "90%",
+    padding: 7,
+    justifyContent: "space-between",
+    backgroundColor: "#7CB9E8",
+  },
+  sync: {
+    paddingTop: 8,
   },
 });

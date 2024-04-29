@@ -8,16 +8,18 @@ import {
   TextInput,
   TouchableOpacity,
   Alert,
+  Image,
 } from "react-native";
 import { Button } from "@rneui/themed";
 import {
   createUserWithEmailAndPassword,
-  signInWithEmailAndPassword, getAuth
+  signInWithEmailAndPassword,
+  getAuth,
+  sendPasswordResetEmail,
 } from "firebase/auth";
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
 //Kirjautumis -sivu
-
-
 const LoginScreen = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -62,10 +64,26 @@ const LoginScreen = (props) => {
       });
   };
 
+  const passwordSentToEmail = () => {
+    sendPasswordResetEmail(auth, email)
+      .then(() => {
+        console.log("Sent to email.")
+        Alert.alert("Sent to email.");
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorCode && errorMessage);
+      });
+  };
+
   return (
     <View style={styles.container}>
-      <KeyboardAvoidingView>
-        <View style={styles.inputContainer}>
+      <KeyboardAwareScrollView>
+        <Image
+          style={{ width: 300, height: "110%" }}
+          source={require("../treenisovellus_dumbell.png")}
+        />
           <TextInput
             style={styles.input}
             value={email}
@@ -81,26 +99,29 @@ const LoginScreen = (props) => {
             secureTextEntry={true}
             onChangeText={(text) => setPassword(text)}
           />
+        <View style={styles.buttonContainer}>
+          <Button
+            title="Sign in"
+            titleStyle={styles.bottonText}
+            buttonStyle={styles.button}
+            onPress={handleSignIn}
+          />
+          <Button
+            title="Register"
+            titleStyle={styles.buttonOutlineText}
+            buttonStyle={styles.buttonOutline}
+            onPress={handleSignUp}
+          />
+          <TouchableOpacity>
+            <Text
+              style={styles.forgot_button}
+              onPress={() => passwordSentToEmail()}
+            >
+              Forgot Password?
+            </Text>
+          </TouchableOpacity>
         </View>
-      </KeyboardAvoidingView>
-
-      <View style={styles.buttonContainer}>
-        <Button
-          title="Sign in"
-          titleStyle={styles.bottonText}
-          buttonStyle={styles.button}
-          onPress={handleSignIn}
-        />
-        <Button
-          title="Register"
-          titleStyle={styles.buttonOutlineText}
-          buttonStyle={styles.buttonOutline}
-          onPress={handleSignUp}
-        />
-      </View>
-      <TouchableOpacity>
-        <Text style={styles.forgot_button}>Forgot Password?</Text>
-      </TouchableOpacity>
+      </KeyboardAwareScrollView>
     </View>
   );
 };
@@ -110,45 +131,42 @@ export default LoginScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
+    justifyContent: "space-between",
     alignItems: "center",
-    width: "100%",
-  },
-  inputContainer: {
-    width: "80%",
   },
   input: {
     backgroundColor: "white",
-    paddingHorizontal: 90,
-    paddingVertical: 15,
+    paddingHorizontal: 50,
+    paddingVertical: 18,
     borderRadius: 10,
     marginTop: 5,
   },
   buttonContainer: {
-    width: "60%",
     marginTop: 10,
   },
   button: {
-    paddingHorizontal: 70,
-    paddingVertical: 10,
-    backgroundColor: "lightblue",
+    width: "100%",
+    backgroundColor: "#7CB9E8",
     borderRadius: 10,
+    borderColor: "#7CB9E8",
+    borderWidth: 3,
     marginTop: 5,
+    paddingHorizontal: 60,
   },
   buttonOutline: {
-    paddingHorizontal: 60,
-    paddingVertical: 10,
+    width: "100%",
     backgroundColor: "white",
-    borderColor: "lightblue",
+    borderColor: "#7CB9E8",
     borderWidth: 2,
     borderRadius: 10,
     marginTop: 5,
+    paddingHorizontal: 60,
   },
   bottonText: {
     color: "white",
   },
   buttonOutlineText: {
-    color: "lightblue",
+    color: "#7CB9E8",
   },
   forgot_button: {
     height: 30,

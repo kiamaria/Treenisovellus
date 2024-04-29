@@ -7,13 +7,11 @@ import {
   TextInput,
   FlatList,
   View,
-  ScrollView,
   Alert,
 } from "react-native";
-import { ListItem, Card, CheckBox } from "@rneui/themed";
+import { ListItem, Card, CheckBox, Icon } from "@rneui/themed";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { SelectList } from "react-native-dropdown-select-list";
-import { Icon } from "react-native-elements";
 import { database, auth } from "../../firebaseConfig";
 import { collection, addDoc } from "firebase/firestore"; 
 
@@ -107,9 +105,8 @@ const SaveTraining = (props) => {
       console.error(error);
     }
   };
-  console.log(user.uid)
 
-  //Databseen tallentaminen
+  //Databaseen tallentaminen
   const saveToDatabase = async () => {
     const docRef = await addDoc(collection(database, "trainings"), {
       trainingName: trainingName,
@@ -156,7 +153,7 @@ const SaveTraining = (props) => {
           <Text style={styles.text}>No moves selected yet!</Text>
         ) : (
           <FlatList
-            style={styles.list}
+            style={{width: "100%"}}
             data={checkedExercises}
             keyExtractor={(item, index) => index.toString()}
             renderItem={({ item }) => (
@@ -206,6 +203,7 @@ const SaveTraining = (props) => {
           data={muscleGroups}
           save="muscle"
         />
+        </View>
 
         <Button title="Search" onPress={getExercises} />
 
@@ -231,9 +229,6 @@ const SaveTraining = (props) => {
             </ListItem>
           )}
         />
-
-        <View style={styles.box}></View>
-      </View>
     </SafeAreaView>
   );
 };
@@ -241,6 +236,8 @@ const SaveTraining = (props) => {
 const styles = StyleSheet.create({
   container: {
     alignItems: "center",
+    flex: 1,
+    justifyContent: "space-evenly",
   },
   title: {
     fontWeight: "bold",
@@ -249,7 +246,6 @@ const styles = StyleSheet.create({
     padding: 8,
     color: "white",
     fontSize: 20,
-    color: "white",
     paddingBottom: 5,
   },
   search: {
@@ -265,5 +261,8 @@ const styles = StyleSheet.create({
   text: {
     color: "white",
     padding: 8,
+  },
+  list: {
+    width: "90%",
   },
 });
