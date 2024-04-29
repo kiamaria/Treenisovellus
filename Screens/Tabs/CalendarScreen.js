@@ -142,11 +142,12 @@ export const CalendarScreen = () => {
     );
   };
 
-  // 
+  // Määrittää näytetäänkö treenin lisäys kalenteriin
   const handleAddTraining = () => {
     setShowAddTraining(true);
   };
 
+  // Treenin lisäys kalenteriin
   return (
     <SafeAreaView style={styles.container}>
       {showAddTraining ? (

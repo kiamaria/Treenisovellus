@@ -15,6 +15,8 @@ import { SelectList } from "react-native-dropdown-select-list";
 import { database, auth } from "../../firebaseConfig";
 import { collection, addDoc } from "firebase/firestore"; 
 
+// Uuden treenin luomis -sivu
+
 const Stack = createNativeStackNavigator();
 
 // Stack navigaatio yksittäisten liikkeiden tietojen katseluun
@@ -171,27 +173,6 @@ const SaveTraining = (props) => {
       </View>
     );
   };
-
-    const handlePress = () => {
-      Alert.prompt(
-        "How many reps?",
-        null,
-        (reps) => {
-          if (reps !== null) {
-            // Tarkista, että reps on numero ennen kuin päivität tilan
-            if (!isNaN(reps)) {
-              setReps(parseInt(reps));
-              checked(item.WorkOut);
-            } else {
-              Alert.alert("Please enter a valid number for reps.");
-            }
-          }
-        },
-        "plain-text",
-        "",
-        "numeric"
-      );
-    };
 
   //Liikkeiden suodatus ja näyttäminen
   return (

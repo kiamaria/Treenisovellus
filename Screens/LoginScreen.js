@@ -4,7 +4,6 @@ import {
   StyleSheet,
   Text,
   View,
-  KeyboardAvoidingView,
   TextInput,
   TouchableOpacity,
   Alert,
@@ -64,6 +63,7 @@ const LoginScreen = (props) => {
       });
   };
 
+  // Salasanan lähetys jos unohtunut
   const passwordSentToEmail = () => {
     sendPasswordResetEmail(auth, email)
       .then(() => {
@@ -81,7 +81,7 @@ const LoginScreen = (props) => {
     <View style={styles.container}>
       <KeyboardAwareScrollView>
         <Image
-          style={{ width: 300, height: "110%" }}
+          style={styles.image}
           source={require("../treenisovellus_dumbell.png")}
         />
           <TextInput
@@ -136,7 +136,7 @@ const styles = StyleSheet.create({
   },
   input: {
     backgroundColor: "white",
-    paddingHorizontal: 50,
+    paddingHorizontal: 25,
     paddingVertical: 18,
     borderRadius: 10,
     marginTop: 5,
@@ -171,5 +171,10 @@ const styles = StyleSheet.create({
   forgot_button: {
     height: 30,
     marginTop: 10,
+    textAlign: "center",
+  },
+  image: {
+    width: 300,
+    height: "110%",
   },
 });
