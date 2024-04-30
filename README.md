@@ -33,7 +33,7 @@ Lataus
 2. Lisää API avain: SaveTrainingScreen.js
    
 ## Firebase Authentication & Firestore 
-Lisää tietoa näistä voi lukea sivuilta [https://firebase.google.com/docs/auth](https://firebase.google.com/docs/auth) & [https://firebase.google.com/docs/firestore](https://firebase.google.com/docs/firestore).
+Lisää tietoa näistä voi lukea sivuilta [Firebase Authentication](https://firebase.google.com/docs/auth) & [Firestore](https://firebase.google.com/docs/firestore).
 
 ## Jatko kehittäminen
 Tässä muutamia kohtia, joihin saatan palata myöhemmin:
