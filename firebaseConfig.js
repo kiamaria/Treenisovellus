@@ -8,13 +8,13 @@ import { getFirestore } from "firebase/firestore";
 import ReactNativeAsyncStorage from "@react-native-async-storage/async-storage";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDa2IpQz_68fHWR5N5_KQvu5Ehk8igfNwE",
+  apiKey: "..",
   authDomain: "treenisovellus.firebaseapp.com",
   databaseURL: "https://treenisovellus-default-rtdb.firebaseio.com",
   projectId: "treenisovellus",
   storageBucket: "treenisovellus.appspot.com",
-  messagingSenderId: "124914196786",
-  appId: "1:124914196786:web:b82511e96c97971e9a372b",
+  messagingSenderId: "12491419678",
+  appId: "1:124914196786:web:b82511e96c97971e9a372",
 };
 
 const app = initializeApp(firebaseConfig);
