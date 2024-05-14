@@ -1,5 +1,5 @@
 # Opintojakson Mobiiliohjelmointi SOF008AS3A-3005 / Lopputyö 
-Tervetuloa tutustumaan React Native -mobiilisovellukseen, joka on suunniteltu helpottamaan oman treenaamisen seuraamista ja suunnittelua. Tämän sovelluksen avulla voit luoda, tarkastella ja lisätä treenejä kätevästi kalenteriisi. Käytämme tässä sovelluksessa REST APIa: Work Out API By EverydayAlgo, ja käyttäjätunnistus sekä tietokantaominaisuudet on toteutettu Firebasen avulla.
+Tervetuloa tutustumaan React Native -mobiilisovellukseen, joka on suunniteltu helpottamaan oman treenaamisen seuraamista ja suunnittelua. Tämän sovelluksen avulla voit luoda, tarkastella ja lisätä treenejä kätevästi kalenteriisi. Tässä sovelluksessa käytetään REST API:a Work Out API By EverydayAlgo, ja käyttäjätunnistus sekä tietokantaominaisuudet on toteutettu Firebasen avulla.
 ## Kuvia sovelluksesta
 <img width="150" alt="Screenshot 2024-04-30 at 12 09 33" src="https://github.com/kiamaria/lopputyoMobiilikehitys/assets/123375780/350bb3af-4436-4df8-b063-cf0e7918aef1">
 <img width="150" alt="Screenshot 2024-04-30 at 12 10 42" src="https://github.com/kiamaria/lopputyoMobiilikehitys/assets/123375780/cf6d8ae3-6133-4e04-895f-89974e7c25f9">
